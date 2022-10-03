@@ -1,0 +1,73 @@
+package com.service;
+
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Scanner;
+
+import com.dao.DaoImp;
+import com.entity.Laptop;
+
+public class LaptopService {
+	public void viewdetails() throws ClassNotFoundException, SQLException
+	{
+		List<Laptop>Laptoplist=new DaoImp().viewdetails();
+		for(Laptop l:Laptoplist)
+		{
+			
+			System.out.print(l.getLapID()+'\t');
+			System.out.print(l.getLaptopBrand()+'\t');
+			System.out.print(l.getLaptopFeatures()+'\t');
+			System.out.println(l.getItemsInStock()+'\t');
+			System.out.println(l.getAmount()+'\t');
+		}
+	}
+	public void insertdetails() throws ClassNotFoundException, SQLException {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("enter the LapID:");
+		int LapID=sc.nextInt();
+		System.out.println("enter the LaptopBrand:");
+		String LaptopBrand=sc.next();
+		System.out.println("enter the LaptopFeatures:");
+		String LaptopFeatures=sc.next();
+		System.out.println("enter the ItemmsInStock:");
+		int ItemsInStock=sc.nextInt();
+		System.out.println("enter the Amount");
+		float Amount=sc.nextLong();
+		Laptop l=new Laptop();
+		l.setLapID(LapID);
+		l.setLaptopBrand(LaptopBrand);
+		l.setLaptopFeatures(LaptopFeatures);
+		l.setItemsInStock(ItemsInStock);
+		l.setAmount(Amount);
+		new DaoImp().insertdetails(l);
+	}
+public void updatedetails() throws ClassNotFoundException, SQLException {
+	Scanner sc=new Scanner(System.in);
+	System.out.println("enter the LapID:");
+	int LapID=sc.nextInt();
+	System.out.println("enter the LaptopBrand:");
+	String LaptopBrand=sc.next();
+	System.out.println("enter the LaptopFeatures:");
+	String LaptopFeatures=sc.next();
+	System.out.println("enter the ItemmsInStock:");
+	int ItemsInStock=sc.nextInt();
+	System.out.println("enter the Amount");
+	float Amount=sc.nextLong();
+	Laptop l=new Laptop();
+	l.setLapID(LapID);
+	l.setLaptopBrand(LaptopBrand);
+	l.setLaptopFeatures(LaptopFeatures);
+	l.setItemsInStock(ItemsInStock);
+	l.setAmount(Amount);
+	
+		new DaoImp().updatedetails(l);
+}
+public void deletedetails() throws ClassNotFoundException, SQLException {
+	Scanner sc=new Scanner(System.in);
+	System.out.println("enter the features:");
+	String LaptopFeatures=sc.next();
+     Laptop l=new Laptop();
+     l.setLaptopFeatures(LaptopFeatures);
+	new DaoImp().deletedetails(l);
+}
+}

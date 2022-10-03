@@ -1,0 +1,13 @@
+package com.dao;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import com.entity.Laptop;
+
+public interface LaptopDao {
+	public List<Laptop>viewdetails() throws ClassNotFoundException, SQLException;
+	public List<Laptop> insertdetails(Laptop l) throws ClassNotFoundException, SQLException;
+	public void updatedetails(Laptop l) throws SQLException, ClassNotFoundException;
+	public void deletedetails(Laptop l) throws SQLException, ClassNotFoundException;
+}

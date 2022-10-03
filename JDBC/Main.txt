@@ -1,0 +1,45 @@
+package com.entity;
+
+import java.sql.SQLException;
+import java.util.Scanner;
+
+import com.service.LaptopService;
+
+public class LaptopMain {
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		String s;
+		System.out.println("Laptop shop");
+		System.out.println("1.View Data");
+		System.out.println("2.Insert Data");
+		System.out.println("3.Update Data");
+		System.out.println("4.delete Data");
+		do
+		{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("enter the choice");
+		
+			int choice =sc.nextInt();
+			switch(choice)
+			{
+			case 1:
+				new LaptopService().viewdetails();
+				break;
+			case 2:
+				new LaptopService().insertdetails();
+				break;
+			case 3:
+				new LaptopService().updatedetails();
+				break;
+			case 4:
+				new LaptopService().deletedetails();
+				break;
+			}
+				System.out.println("do u want to continue");
+				s=sc.next();
+			
+
+	}
+
+		while(s.equals("yes"));
+	}
+}

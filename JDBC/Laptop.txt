@@ -1,0 +1,52 @@
+package com.entity;
+
+public class Laptop {
+	private int LapID;
+	private String LaptopBrand;
+	private String LaptopFeatures;
+	private int ItemsInStock;
+	private float Amount;
+	public Laptop() {
+		
+	}
+	public Laptop(int lapID, String laptopBrand, String laptopFeatures, int itemsInStock, float amount) {
+		super();
+		this.LapID = lapID;
+		this.LaptopBrand = laptopBrand;
+		this.LaptopFeatures = laptopFeatures;
+		this.ItemsInStock = itemsInStock;
+		this.Amount = amount;
+	}
+	public int getLapID() {
+		return LapID;
+	}
+	public void setLapID(int lapID) {
+		this.LapID = lapID;
+	}
+	public String getLaptopBrand() {
+		return LaptopBrand;
+	}
+	public void setLaptopBrand(String laptopBrand) {
+		this.LaptopBrand = laptopBrand;
+	}
+	public String getLaptopFeatures() {
+		return LaptopFeatures;
+	}
+	public void setLaptopFeatures(String laptopFeatures) {
+		this.LaptopFeatures = laptopFeatures;
+	}
+	public int getItemsInStock() {
+		return ItemsInStock;
+	}
+	public void setItemsInStock(int ItmesInStock) {
+		this.ItemsInStock =ItemsInStock ;
+	}
+	public float getAmount() {
+		return Amount;
+	}
+	public void setAmount(float amount) {
+		this.Amount = amount;
+	}
+	
+}
+	

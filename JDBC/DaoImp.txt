@@ -1,0 +1,108 @@
+package com.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.entity.Laptop;
+
+public class DaoImp implements LaptopDao {
+	public List<Laptop> viewpatient() throws ClassNotFoundException, SQLException{
+		ArrayList<Laptop>Laptoplist=new ArrayList<Laptop>();
+        Class.forName("com.mysql.jdbc.Driver");
+        //create the connection
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/sample","root","Kavi@123");
+        //create the statement
+        PreparedStatement ps=con.prepareStatement("select * from Laptop");
+        ResultSet rs=ps.executeQuery();
+		
+		while(rs.next())
+        {
+            Laptop l=new Laptop();
+                l.setLapID(rs.getInt(1));
+                l.setLaptopBrand(rs.getString(2));
+                l.setLaptopFeatures(rs.getString(3));
+                l.setItemsInStock(rs.getInt(4));
+                l.setAmount(rs.getFloat(5));
+                LaptopList.add(l);
+          }
+		return Laptoplist;
+	}
+
+	@Override
+	public List<Laptop> insertdetails(Laptop l) throws ClassNotFoundException, SQLException {
+		List<Laptop> patientlist=new ArrayList<Laptop>();
+		Class.forName("com.mysql.jdbc.Driver");
+        //create the connection
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/sample","root","Kavi@123");
+        //create the statement
+        PreparedStatement ps=con.prepareStatement("Insert into patient values (?,?,?,?,?)");
+        ps.setInt(1, l.getLapID());
+        ps.setString(2, l.getLaptopBrand());
+        ps.setString(3, l.getLaptopFeatures());
+        ps.setInt(4, l.getItemsInStock());
+        ps.setFloat(5, l.getAmount());
+        ps.executeUpdate();
+		return patientlist;
+		
+	}
+
+	@Override
+	public void updatedetails(Laptop l) throws SQLException, ClassNotFoundException {
+		Class.forName("com.mysql.jdbc.Driver");
+        //create the connection
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/sample","root","Kavi@123");
+        //create the statement
+        PreparedStatement ps=con.prepareStatement("update Laptop set Amount=?,LaptopBrand=?,LaptopFeatures=?,ItemInStock=? where LapID=?");
+        ps.setInt(3,l.getLapID());
+        ps.setString(1, l.getLaptopBrand());
+        ps.setString(2, l.getLaptopFeatures());
+        ps.setFloat(4, l.getAmount());
+        ps.setInt(5,l.getItemsInStock());
+        ps.executeUpdate();
+	}
+
+	@Override
+	public void deletedetails(Laptop l) throws SQLException, ClassNotFoundException {
+		Class.forName("com.mysql.jdbc.Driver");
+		//create the connection
+		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/sample","root","Kavi@123");
+		//create the statement
+		PreparedStatement ps=con.prepareStatement("delete from Laptop where LapID=?");
+		ps.setInt(1, l.getLapID());
+		ps.executeUpdate();
+		
+	}
+
+	
+
+
+
+	
+
+	@Override
+	public List<Laptop> viewdetails() throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		List<Laptop> Laptoplist=new ArrayList<Laptop>();
+		Class.forName("com.mysql.jdbc.Driver");
+        //create the connection
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/sample","root","Kavi@123");
+        //create the statement
+        PreparedStatement ps=con.prepareStatement("Insert into laptop values (?,?,?,?,?)");
+        Laptop l=new Laptop();
+        ps.setInt(1, l.getLapID());
+        ps.setString(2, l.getLaptopBrand());
+        ps.setString(3, l.getLaptopFeatures());
+        ps.setInt(4, l.getItemsInStock());
+        ps.setFloat(5, l.getAmount());
+        ps.executeUpdate();
+		return Laptoplist;
+		
+	
+	}
+
+}
