@@ -15,7 +15,7 @@ public class DaoImp implements LaptopDao {
 		ArrayList<Laptop>Laptoplist=new ArrayList<Laptop>();
         Class.forName("com.mysql.jdbc.Driver");
         //create the connection
-        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/sample","root","Kavi@123");
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/sample","root","root");
         //create the statement
         PreparedStatement ps=con.prepareStatement("select * from Laptop");
         ResultSet rs=ps.executeQuery();
@@ -38,7 +38,7 @@ public class DaoImp implements LaptopDao {
 		List<Laptop> patientlist=new ArrayList<Laptop>();
 		Class.forName("com.mysql.jdbc.Driver");
         //create the connection
-        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/sample","root","Kavi@123");
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/sample","root","root");
         //create the statement
         PreparedStatement ps=con.prepareStatement("Insert into patient values (?,?,?,?,?)");
         ps.setInt(1, l.getLapID());
@@ -55,7 +55,7 @@ public class DaoImp implements LaptopDao {
 	public void updatedetails(Laptop l) throws SQLException, ClassNotFoundException {
 		Class.forName("com.mysql.jdbc.Driver");
         //create the connection
-        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/sample","root","Kavi@123");
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/sample","root","root");
         //create the statement
         PreparedStatement ps=con.prepareStatement("update Laptop set Amount=?,LaptopBrand=?,LaptopFeatures=?,ItemInStock=? where LapID=?");
         ps.setInt(3,l.getLapID());
@@ -70,7 +70,7 @@ public class DaoImp implements LaptopDao {
 	public void deletedetails(Laptop l) throws SQLException, ClassNotFoundException {
 		Class.forName("com.mysql.jdbc.Driver");
 		//create the connection
-		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/sample","root","Kavi@123");
+		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/sample","root","root");
 		//create the statement
 		PreparedStatement ps=con.prepareStatement("delete from Laptop where LapID=?");
 		ps.setInt(1, l.getLapID());
@@ -90,7 +90,7 @@ public class DaoImp implements LaptopDao {
 		List<Laptop> Laptoplist=new ArrayList<Laptop>();
 		Class.forName("com.mysql.jdbc.Driver");
         //create the connection
-        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/sample","root","Kavi@123");
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/sample","root","root");
         //create the statement
         PreparedStatement ps=con.prepareStatement("Insert into laptop values (?,?,?,?,?)");
         Laptop l=new Laptop();
